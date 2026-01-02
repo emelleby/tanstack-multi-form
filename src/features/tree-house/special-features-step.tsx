@@ -1,21 +1,28 @@
-import { withForm } from '../../hooks/form';
-import { treeHouseFormOpts } from './shared-form.ts';
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
+import { SubscribeButtonWithForm } from '../../hooks/form';
 
-export const SpecialFeaturesStep = withForm({
-  ...treeHouseFormOpts,
-  render: function Render({ form }) {
-    return (
-      <div>
+interface SpecialFeaturesStepProps {
+  form: any;
+}
+
+export const SpecialFeaturesStep = ({ form }: SpecialFeaturesStepProps) => {
+  return (
+    <Card>
+      <CardHeader>
+        <CardTitle>Special Features</CardTitle>
+        <CardDescription>Add special features and customize your tree house.</CardDescription>
+      </CardHeader>
+      <CardContent className="space-y-6">
         <form.AppField
           name="specialFeatures.secretFeatures"
-          children={(field) => <field.TextField label="Secret features" />}
+          children={(field: any) => <field.TextField label="Secret features" />}
         />
         <form.AppField
           name="specialFeatures.guestList"
-          children={(field) => <field.TextField label="Guest list" />}
+          children={(field: any) => <field.TextField label="Guest list" />}
         />
-        <button> Next </button>
-      </div>
-    );
-  },
-});
+        <SubscribeButtonWithForm label="Next" form={form} />
+      </CardContent>
+    </Card>
+  );
+};

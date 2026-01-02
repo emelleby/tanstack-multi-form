@@ -3,13 +3,13 @@ import z from 'zod';
 export const locationSchema = z.object({
   location: z.object({
     treeType: z.string().trim().min(1, 'Tree type is required'),
-    height: z.string().trim().min(1, 'Height is required'),
+    height: z.number().min(0.1, 'Height is required'),
   }),
 });
 
 export const sizeSchema = z.object({
   size: z.object({
-    rooms: z.string().trim().min(1, 'Number of rooms is required'),
+    rooms: z.number().min(1, 'Number of rooms is required'),
   }),
 });
 
